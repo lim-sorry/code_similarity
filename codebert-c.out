@@ -1,0 +1,7 @@
+/opt/conda/envs/py_3.9/lib/python3.9/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+iter 1000: train_loss: 0.05221, train_acc: 0.76
+iter 2000: train_loss: 0.02291, train_acc: 0.93
+iter 3000: train_loss: 0.01862, train_acc: 0.94
+iter 4000: train_loss: 0.01678, train_acc: 0.95
+iter 5000: train_loss: 0.01482, train_acc: 0.96
