@@ -65,7 +65,7 @@ class TestDataset(Dataset):
 def main(opt):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    tokenizer = AutoTokenizer.from_pretrained('neulab/codebert-cpp', truncation_side='left')
+    tokenizer = AutoTokenizer.from_pretrained(opt.model_path, truncation_side='left')
     model = AutoModelForSequenceClassification.from_pretrained(opt.model_path).to(device)
 
     if opt.mode.lower() == 'train':
@@ -112,11 +112,11 @@ def main(opt):
                 train_acc /= n_div*2
                 print(f"iter {i+1}: train_loss: {train_loss:3.5f}, train_acc: {train_acc:3.2f}")
                 n_div, train_loss, train_acc = 0, 0.0, 0.0
-                checkpoint = {
-                    'model': model.state_dict(),
-                    'optimizer': optimizer.state_dict(),
-                }
-                torch.save(checkpoint, opt.pt_path)
+        checkpoint = {
+            'model': model.state_dict(),
+            'optimizer': optimizer.state_dict(),
+        }
+        torch.save(checkpoint, opt.pt_path)
             
     if opt.mode.lower() == 'test':
         assert os.path.exists(opt.pt_path)
