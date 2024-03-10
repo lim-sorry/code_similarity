@@ -121,6 +121,14 @@ def test_weight_sum(opt):
             n_div += output_0['logits'].size(0)
             tq.set_postfix_str(f'optimal w:{np.argmax(acc_list) * 0.01:.2f}')
 
+def ensemble_with_optimal_w():
+    w = 0.7
+    df = pd.read_csv('logits.csv')
+    logits = np.vstack([(df['logits_0_0']*w + df['logits_1_0']*(1-w)), (df['logits_0_1']*w + df['logits_1_1']*(1-w))])
+    df['similar'] = 1 - np.argmax(logits.T, axis=1)
+    df = df.drop(['logits_0_0','logits_0_1','logits_1_0','logits_1_1'], axis=1)
+    df.to_csv(f"ensemble_submission_{w}.csv", index=False, encoding='utf-8')
+
 
 def parse_arg():
     parser = argparse.ArgumentParser()
@@ -148,4 +156,5 @@ if __name__ == '__main__':
     logging.set_verbosity_error()
 
     # main(opt)
-    test_weight_sum(opt)
+    # test_weight_sum(opt)
+    ensemble_with_optimal_w()
