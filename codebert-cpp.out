@@ -16,3 +16,39 @@ iter 13000: train_loss: 0.00796, train_acc: 0.98
 iter 14000: train_loss: 0.00768, train_acc: 0.98
 iter 15000: train_loss: 0.00736, train_acc: 0.98
 iter 15625: train_loss: 0.00726, train_acc: 0.98
+/opt/conda/envs/py_3.9/lib/python3.9/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+checkpoint load...
+epoch 2 train start...
+iter 1000: train_loss: 0.01662, train_acc: 0.97
+iter 2000: train_loss: 0.01489, train_acc: 0.98
+iter 3000: train_loss: 0.01519, train_acc: 0.98
+iter 4000: train_loss: 0.01465, train_acc: 0.98
+iter 5000: train_loss: 0.01475, train_acc: 0.98
+iter 6000: train_loss: 0.01359, train_acc: 0.98
+iter 7000: train_loss: 0.01376, train_acc: 0.98
+iter 8000: train_loss: 0.01429, train_acc: 0.98
+iter 9000: train_loss: 0.01285, train_acc: 0.98
+iter 10000: train_loss: 0.01300, train_acc: 0.98
+iter 11000: train_loss: 0.01310, train_acc: 0.98
+iter 12000: train_loss: 0.01244, train_acc: 0.98
+iter 13000: train_loss: 0.01376, train_acc: 0.98
+iter 14000: train_loss: 0.01223, train_acc: 0.98
+iter 15000: train_loss: 0.01239, train_acc: 0.98
+iter 16000: train_loss: 0.01269, train_acc: 0.98
+iter 17000: train_loss: 0.01280, train_acc: 0.98
+iter 18000: train_loss: 0.01260, train_acc: 0.98
+iter 19000: train_loss: 0.01237, train_acc: 0.98
+iter 20000: train_loss: 0.01143, train_acc: 0.98
+iter 21000: train_loss: 0.01257, train_acc: 0.98
+iter 22000: train_loss: 0.01187, train_acc: 0.98
+iter 23000: train_loss: 0.01198, train_acc: 0.98
+iter 24000: train_loss: 0.01116, train_acc: 0.98
+iter 25000: train_loss: 0.01251, train_acc: 0.98
+iter 26000: train_loss: 0.01134, train_acc: 0.98
+iter 27000: train_loss: 0.01178, train_acc: 0.98
+iter 28000: train_loss: 0.01205, train_acc: 0.98
+iter 29000: train_loss: 0.01153, train_acc: 0.98
+iter 30000: train_loss: 0.01078, train_acc: 0.98
+iter 31000: train_loss: 0.01189, train_acc: 0.98
+iter 31250: train_loss: 0.01226, train_acc: 0.98

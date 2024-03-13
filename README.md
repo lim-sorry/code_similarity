@@ -1,9 +1,11 @@
 # code_similarity
 for dacon
 
-## citations
+## Citation
+Special gratitude for providing a fine-tuned Bert model for c and cpp language.
 
-### neulab/codebert-cpp
+### 1. neulab/codebert-cpp&codebert-c
+https://huggingface.co/neulab/codebert-cpp
 ```
 @article{zhou2023codebertscore,
   url = {https://arxiv.org/abs/2302.05527},
@@ -13,3 +15,5 @@ for dacon
   year = {2023},
 }
 ```
+### 2. MickyMike/graphcodebert-c
+https://huggingface.co/MickyMike/graphcodebert-c/tree/main
