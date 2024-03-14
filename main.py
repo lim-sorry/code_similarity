@@ -25,6 +25,7 @@ class TrainDataset(Dataset):
         self.idx = np.arange(500*500)
         np.random.shuffle(self.idx)
         self.ref = np.random.randint(0,499*499,500*500)
+        print(f'data seed check : {self.idx[0]} {self.ref[0]}')
 
     def __getitem__(self, i):
         prob = (self.idx[i] // 500) + 1
@@ -70,7 +71,7 @@ def main(opt):
         print('checkpoint load...')
 
     model.train()
-    for ep in range(opt.epochs+1):
+    for ep in range(1, opt.epochs+1):
         # Synchronize training sample while epochs
         dataset = TrainDataset()
         if ep < epoch: continue
@@ -125,9 +126,9 @@ def main(opt):
 def parse_arg():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--model_path', type=str, default='MickyMike/graphcodebert-c')
-    # parser.add_argument('--model_path', type=str, default='neulab/codebert-c')
-    parser.add_argument('--epochs', type=int, default=5)
+    # parser.add_argument('--model_path', type=str, default='MickyMike/graphcodebert-c')
+    parser.add_argument('--model_path', type=str, default='neulab/codebert-cpp')
+    parser.add_argument('--epochs', type=int, default=22)
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=2e-5)
     parser.add_argument('--weight_decay', type=float, default=1e-2)
