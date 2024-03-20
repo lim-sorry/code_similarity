@@ -1,6 +1,6 @@
 /opt/conda/envs/py_3.9/lib/python3.9/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
   return self.fget.__get__(instance, owner)()
-data seed check : 38683 215055
+seed 42 idx 38683
 epoch 1 train start...
 iter 1000: train_loss: 0.08249, train_acc: 0.841
 iter 2000: train_loss: 0.04401, train_acc: 0.933
@@ -35,7 +35,7 @@ iter 30000: train_loss: 0.01568, train_acc: 0.975
 iter 31000: train_loss: 0.01527, train_acc: 0.975
 iter 31250: train_loss: 0.01358, train_acc: 0.980
 checkpoint saved...
-data seed check : 225844 44161
+seed 42 idx 225844
 epoch 2 train start...
 iter 1000: train_loss: 0.01501, train_acc: 0.977
 iter 2000: train_loss: 0.01526, train_acc: 0.977
@@ -70,7 +70,112 @@ iter 30000: train_loss: 0.01147, train_acc: 0.983
 iter 31000: train_loss: 0.01155, train_acc: 0.982
 iter 31250: train_loss: 0.01212, train_acc: 0.980
 checkpoint saved...
-data seed check : 178196 192287
+seed 42 idx 178196
 epoch 3 train start...
 iter 1000: train_loss: 0.01255, train_acc: 0.980
 iter 2000: train_loss: 0.01215, train_acc: 0.983
+iter 3000: train_loss: 0.01178, train_acc: 0.981
+iter 4000: train_loss: 0.01190, train_acc: 0.983
+iter 5000: train_loss: 0.01078, train_acc: 0.983
+iter 6000: train_loss: 0.01177, train_acc: 0.982
+iter 7000: train_loss: 0.01244, train_acc: 0.980
+iter 8000: train_loss: 0.01212, train_acc: 0.982
+iter 9000: train_loss: 0.01212, train_acc: 0.980
+iter 10000: train_loss: 0.01174, train_acc: 0.982
+iter 11000: train_loss: 0.01235, train_acc: 0.981
+iter 12000: train_loss: 0.01119, train_acc: 0.982
+iter 13000: train_loss: 0.01058, train_acc: 0.983
+iter 14000: train_loss: 0.01219, train_acc: 0.981
+iter 15000: train_loss: 0.01154, train_acc: 0.982
+iter 16000: train_loss: 0.01144, train_acc: 0.982
+iter 17000: train_loss: 0.01115, train_acc: 0.983
+iter 18000: train_loss: 0.01134, train_acc: 0.982
+iter 19000: train_loss: 0.01155, train_acc: 0.981
+iter 20000: train_loss: 0.01130, train_acc: 0.981
+iter 21000: train_loss: 0.01069, train_acc: 0.984
+iter 22000: train_loss: 0.01100, train_acc: 0.982
+iter 23000: train_loss: 0.01086, train_acc: 0.983
+iter 24000: train_loss: 0.01043, train_acc: 0.983
+iter 25000: train_loss: 0.01119, train_acc: 0.983
+iter 26000: train_loss: 0.01057, train_acc: 0.983
+iter 27000: train_loss: 0.01152, train_acc: 0.983
+iter 28000: train_loss: 0.01074, train_acc: 0.982
+iter 29000: train_loss: 0.01055, train_acc: 0.984
+iter 30000: train_loss: 0.01040, train_acc: 0.985
+iter 31000: train_loss: 0.01146, train_acc: 0.982
+iter 31250: train_loss: 0.01117, train_acc: 0.982
+checkpoint saved...
+checkpoint load...
+seed 42 idx 38683
+seed 42 idx 225844
+seed 42 idx 178196
+seed 42 idx 45439
+epoch 4 train start...
+iter 1000: train_loss: 0.01059, train_acc: 0.983
+iter 2000: train_loss: 0.01066, train_acc: 0.983
+iter 3000: train_loss: 0.01070, train_acc: 0.984
+iter 4000: train_loss: 0.01065, train_acc: 0.984
+iter 5000: train_loss: 0.01028, train_acc: 0.984
+iter 6000: train_loss: 0.01068, train_acc: 0.983
+iter 7000: train_loss: 0.01002, train_acc: 0.984
+iter 8000: train_loss: 0.01066, train_acc: 0.982
+iter 9000: train_loss: 0.00983, train_acc: 0.984
+iter 10000: train_loss: 0.01065, train_acc: 0.983
+iter 11000: train_loss: 0.00921, train_acc: 0.986
+iter 12000: train_loss: 0.00965, train_acc: 0.985
+iter 13000: train_loss: 0.01086, train_acc: 0.983
+iter 14000: train_loss: 0.00992, train_acc: 0.984
+iter 15000: train_loss: 0.01020, train_acc: 0.984
+iter 16000: train_loss: 0.01025, train_acc: 0.984
+iter 17000: train_loss: 0.01012, train_acc: 0.983
+iter 18000: train_loss: 0.00914, train_acc: 0.985
+iter 19000: train_loss: 0.00932, train_acc: 0.986
+iter 20000: train_loss: 0.01058, train_acc: 0.983
+iter 21000: train_loss: 0.00934, train_acc: 0.984
+iter 22000: train_loss: 0.00987, train_acc: 0.985
+iter 23000: train_loss: 0.01340, train_acc: 0.979
+iter 24000: train_loss: 0.01043, train_acc: 0.984
+iter 25000: train_loss: 0.01012, train_acc: 0.984
+iter 26000: train_loss: 0.00986, train_acc: 0.984
+iter 27000: train_loss: 0.00932, train_acc: 0.985
+iter 28000: train_loss: 0.01017, train_acc: 0.984
+iter 29000: train_loss: 0.00998, train_acc: 0.984
+iter 30000: train_loss: 0.00931, train_acc: 0.985
+iter 31000: train_loss: 0.00980, train_acc: 0.984
+iter 31250: train_loss: 0.00795, train_acc: 0.989
+checkpoint saved...
+seed 42 idx 36548
+epoch 5 train start...
+iter 1000: train_loss: 0.00957, train_acc: 0.986
+iter 2000: train_loss: 0.00949, train_acc: 0.984
+iter 3000: train_loss: 0.00883, train_acc: 0.986
+iter 4000: train_loss: 0.00955, train_acc: 0.984
+iter 5000: train_loss: 0.00920, train_acc: 0.986
+iter 6000: train_loss: 0.00969, train_acc: 0.985
+iter 7000: train_loss: 0.00969, train_acc: 0.984
+iter 8000: train_loss: 0.01031, train_acc: 0.983
+iter 9000: train_loss: 0.00958, train_acc: 0.984
+iter 10000: train_loss: 0.00994, train_acc: 0.984
+iter 11000: train_loss: 0.00959, train_acc: 0.984
+iter 12000: train_loss: 0.00940, train_acc: 0.984
+iter 13000: train_loss: 0.00978, train_acc: 0.985
+iter 14000: train_loss: 0.00890, train_acc: 0.987
+iter 15000: train_loss: 0.00937, train_acc: 0.986
+iter 16000: train_loss: 0.00921, train_acc: 0.985
+iter 17000: train_loss: 0.01016, train_acc: 0.984
+iter 18000: train_loss: 0.00931, train_acc: 0.986
+iter 19000: train_loss: 0.00993, train_acc: 0.985
+iter 20000: train_loss: 0.00938, train_acc: 0.985
+iter 21000: train_loss: 0.00989, train_acc: 0.985
+iter 22000: train_loss: 0.01053, train_acc: 0.984
+iter 23000: train_loss: 0.00806, train_acc: 0.986
+iter 24000: train_loss: 0.00846, train_acc: 0.987
+iter 25000: train_loss: 0.00959, train_acc: 0.986
+iter 26000: train_loss: 0.00860, train_acc: 0.987
+iter 27000: train_loss: 0.00912, train_acc: 0.985
+iter 28000: train_loss: 0.00935, train_acc: 0.986
+iter 29000: train_loss: 0.00938, train_acc: 0.984
+iter 30000: train_loss: 0.00925, train_acc: 0.985
+iter 31000: train_loss: 0.00975, train_acc: 0.985
+iter 31250: train_loss: 0.01064, train_acc: 0.984
+checkpoint saved...

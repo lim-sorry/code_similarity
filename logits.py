@@ -14,9 +14,13 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer, logg
 def preprocess_code(code):
     code = re.sub('\/\/.+', '', code)
     code = re.sub('#include.+', '', code)
+    code = re.sub('#define ', '', code)
     code = re.sub('using namespace.+', '', code)
+    code = re.sub('using ', '', code)
     code = re.sub('\/\*.*\*\/', '', code, flags=re.DOTALL)
-    code = re.sub('\n+', '\n', code)
+    code = re.sub('\n+', '', code)
+    code = re.sub(' +', ' ', code)
+    code = re.sub('\t+', ' ', code)
     return code
     
 class TestDataset(Dataset):
@@ -66,7 +70,9 @@ def parse_arg():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--model_path', type=str, default='MickyMike/graphcodebert-c')
-    parser.add_argument('--batch_size', type=int, default=256)
+    # parser.add_argument('--model_path', type=str, default='neulab/codebert-cpp')
+    # parser.add_argument('--model_path', type=str, default='neulab/codebert-c')
+    parser.add_argument('--batch_size', type=int, default=128)
 
     return parser.parse_args()
 
@@ -74,4 +80,6 @@ def parse_arg():
 if __name__ == '__main__':
     opt = parse_arg()
 
-    main(opt)
+    for model_path in ['neulab/codebert-c','neulab/codebert-cpp', 'MickyMike/graphcodebert-c',]:
+        opt.model_path = model_path
+        main(opt)
