@@ -18,6 +18,7 @@ def preprocess_code(code):
     code = re.sub('using namespace.+', '', code)
     code = re.sub('using ', '', code)
     code = re.sub('\/\*.*\*\/', '', code, flags=re.DOTALL)
+    code = re.sub('\\\n+', '', code)
     code = re.sub('\n+', '', code)
     code = re.sub(' +', ' ', code)
     code = re.sub('\t+', ' ', code)

@@ -17,8 +17,10 @@ def preprocess_code(code):
     code = re.sub('using namespace.+', '', code)
     code = re.sub('using ', '', code)
     code = re.sub('\/\*.*\*\/', '', code, flags=re.DOTALL)
+    code = re.sub('\\\n+', '', code)
     code = re.sub('\n+', '', code)
     code = re.sub(' +', ' ', code)
+    code = re.sub('\t+', ' ', code)
     return code
 
 
@@ -71,7 +73,7 @@ def main(opt):
         epoch = checkpoint['epoch']
         model.load_state_dict(checkpoint['model'])
         optimizer.load_state_dict(checkpoint['optimizer'])
-        print('checkpoint load...')
+        print(f'{pt_path} checkpoint load...')
 
     model.train()
     for ep in range(1, opt.epochs+1):
@@ -84,34 +86,28 @@ def main(opt):
 
         n_div, train_loss, train_acc = 0, 0.0, 0.0
         for i, (code_org, code_same, code_diff) in enumerate(dataloader):
+            optimizer.zero_grad()
+
             encode = tokenizer(code_org, code_same, padding=True, truncation=True, return_tensors='pt').to(device)
-
             encode['labels'] = torch.tensor([[1, 0]], dtype=torch.float32).repeat(encode['input_ids'].size(0),1).to(device)
-
             output = model(**encode)
             loss = output['loss']
-            train_loss += loss.item()
             train_acc += torch.sum(1 - torch.argmax(output['logits'], 1)).item()
-
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
 
             encode = tokenizer(code_org, code_diff, padding=True, truncation=True, return_tensors='pt').to(device)
             encode['labels'] = torch.tensor([[0, 1]], dtype=torch.float32).repeat(encode['input_ids'].size(0),1).to(device)
 
             output = model(**encode)
-            loss = output['loss']
-            train_loss += loss.item()
+            loss += output['loss']
             train_acc += torch.sum(torch.argmax(output['logits'], 1)).item()
+            train_loss += loss.item()
 
-            optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
             n_div += encode['input_ids'].size(0)
 
-            if (i+1) % 100 == 0 or (i+1)==len(dataloader):
+            if (i+1) % 1000 == 0 or (i+1)==len(dataloader):
                 train_loss /= n_div
                 train_acc /= n_div*2
                 print(f"iter {i+1}: train_loss: {train_loss:3.5f}, train_acc: {train_acc:.3f}")
@@ -122,34 +118,42 @@ def main(opt):
             'model': model.state_dict(),
             'optimizer': optimizer.state_dict(),
         }
-        #torch.save(checkpoint, pt_path)
-        print('checkpoint saved...')
+        torch.save(checkpoint, pt_path)
+        print(f'{pt_path} checkpoint saved...')
 
             
 def parse_arg():
     parser = argparse.ArgumentParser()
 
-    #parser.add_argument('--model_path', type=str, default='MickyMike/graphcodebert-c')
-    parser.add_argument('--model_path', type=str, default='neulab/codebert-c')
-    parser.add_argument('--epochs', type=int, default=7)
+    #parser.add_argument('--model_path', type=str, default='neulab/codebert-cpp')
+    #parser.add_argument('--model_path', type=str, default='neulab/codebert-c')
+    parser.add_argument('--model_path', type=str, default='MickyMike/graphcodebert-c')
+    #parser.add_argument('--seed', type=int, default=42)
+    #parser.add_argument('--seed', type=int, default=43)
+    parser.add_argument('--seed', type=int, default=44)
+    parser.add_argument('--epochs', type=int, default=5)
     parser.add_argument('--batch_size', type=int, default=8)
     parser.add_argument('--learning_rate', type=float, default=2e-5)
     parser.add_argument('--weight_decay', type=float, default=1e-2)
-    parser.add_argument('--seed', type=int, default=42)
 
-    
     return parser.parse_args()
 
 
 if __name__ == '__main__':
     opt = parse_arg()
 
-    torch.manual_seed(opt.seed)
-    np.random.seed(opt.seed)
-    random.seed(opt.seed)
-    torch.cuda.manual_seed_all(opt.seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    logging.set_verbosity_error()
+    model_paths = ['neulab/codebert-cpp','neulab/codebert-c', 'MickyMike/graphcodebert-c',]
+    seeds = [42, 43, 44]
+    for i in range(len(model_paths)):
+        opt.model_path = model_paths[i]
+        opt.seed = seeds[i]
 
-    main(opt)
+        torch.manual_seed(opt.seed)
+        np.random.seed(opt.seed)
+        random.seed(opt.seed)
+        torch.cuda.manual_seed_all(opt.seed)
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+        logging.set_verbosity_error()
+        
+        main(opt)
